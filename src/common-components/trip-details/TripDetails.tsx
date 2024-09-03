@@ -3,10 +3,12 @@ import { TextInput } from "../";
 
 interface Props {
   onChangeTripValue: (key: string, value: string) => void;
-  trip: ITrip;
+  trip?: ITrip;
 }
 
 export const TripDetails = ({ trip, onChangeTripValue }: Props) => {
+  if (trip === undefined) return null;
+
   return (
     <>
       <div className="px-4 sm:px-0">

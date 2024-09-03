@@ -10,6 +10,7 @@ import { formatDate } from "../../../utils";
 import { useState } from "react";
 import { deleteTrip } from "../../../services";
 import { useToast } from "../../../hooks";
+import { EmptyTripsList } from "./EmptyTripsList";
 
 interface Props {
   trips: ITrip[];
@@ -57,6 +58,7 @@ export const MyTripsList = ({ trips, getTrips }: Props) => {
     }
   };
 
+  if (trips.length === 0) return <EmptyTripsList />;
   return (
     <>
       <div className="flex flex-wrap gap-5">

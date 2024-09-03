@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { AppLayout, PageLoader } from "../../common-components";
+import { AppLayout, FullScreenLoader } from "../../common-components";
 import { ITrip } from "../../types";
 import { TripPlanPreview, TripPlannerForm } from "./components";
 import { getTripItinerary } from "../../services";
@@ -41,7 +41,7 @@ export const TripPlannerPage = () => {
   return (
     <AppLayout pageTitle="Trip planner">
       {isLoading && (
-        <PageLoader text="Generating your trip itinerary. Please don't close this page." />
+        <FullScreenLoader text="Generating your trip itinerary. Please don't close this page." />
       )}
       <div className="mx-auto max-w-4xl px-4 py-6 sm:px-6 lg:px-8">
         {showPreviewPage ? (

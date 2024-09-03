@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 
-import { AppLayout } from "../../common-components";
+import { AppLayout, Loader } from "../../common-components";
 import { ITrip } from "../../types";
 import { MyTripsList } from "./components";
 import { getAllUserTrips } from "../../services";
@@ -28,12 +28,13 @@ export const MyTripsPage = () => {
     getTrips();
   }, [getTrips]);
 
-  // TODO - add loading state
   return (
     <AppLayout pageTitle="My Trips">
       <div className="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:px-8">
         {isLoading ? (
-          "Loading..."
+          <div className="w-full flex justify-center items-center flex-col pt-32">
+            {<Loader />}
+          </div>
         ) : (
           <MyTripsList trips={trips} getTrips={getTrips} />
         )}

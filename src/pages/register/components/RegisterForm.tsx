@@ -75,7 +75,7 @@ export const RegisterForm = ({
                 to="/"
                 className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500"
               >
-                Sign in here
+                Log in here
               </Link>
             </p>
             <PrimaryButton

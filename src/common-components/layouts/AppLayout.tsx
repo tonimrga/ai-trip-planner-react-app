@@ -44,7 +44,7 @@ export const AppLayout = ({
   };
 
   const userNavigation: IUserNavigationItem[] = [
-    { name: "Sign out", href: "", onClick: onLogoutUser },
+    { name: "Log out", href: "", onClick: onLogoutUser },
   ];
 
   const navigation: INavigationItem[] = [

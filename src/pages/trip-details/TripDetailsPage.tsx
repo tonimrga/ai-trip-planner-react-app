@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 
 import {
   AppLayout,
+  Loader,
   PrimaryButton,
   TextButton,
   TripDetails,
@@ -61,22 +62,26 @@ export const TripDetailsPage = () => {
     }
   };
 
-  // TODO - add loading state
-  if (isLoading) return "Loading...";
-  if (trip === undefined) return null;
-
   return (
-    <AppLayout pageTitle={trip.title}>
+    <AppLayout pageTitle={trip?.title ?? ""}>
       <div className="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:px-8">
-        <TripDetails trip={trip} onChangeTripValue={onChangeTripValue} />
-        <div className="mt-6 flex items-center justify-end gap-x-6">
-          <TextButton onClick={onGoBackClick} text="Go back" />
-          <PrimaryButton
-            isDisabled={isSavingInProgress}
-            onClick={onSaveTrip}
-            text={"Save"}
-          />
-        </div>
+        {isLoading ? (
+          <div className="w-full flex justify-center items-center flex-col pt-32">
+            {<Loader />}
+          </div>
+        ) : (
+          <>
+            <TripDetails trip={trip} onChangeTripValue={onChangeTripValue} />
+            <div className="mt-6 flex items-center justify-end gap-x-6">
+              <TextButton onClick={onGoBackClick} text="Go back" />
+              <PrimaryButton
+                isDisabled={isSavingInProgress}
+                onClick={onSaveTrip}
+                text={"Save"}
+              />
+            </div>
+          </>
+        )}
       </div>
     </AppLayout>
   );

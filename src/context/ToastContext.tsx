@@ -1,4 +1,10 @@
-import { createContext, PropsWithChildren, useEffect, useState } from "react";
+import {
+  createContext,
+  PropsWithChildren,
+  useCallback,
+  useEffect,
+  useState,
+} from "react";
 
 import { ToastType } from "../types";
 import { ToastContainer } from "../common-components";
@@ -26,10 +32,10 @@ const ToastContextProvider = ({ children }: PropsWithChildren) => {
     }
   }, [shouldShowToast]);
 
-  const toast = (message: string, type: ToastType) => {
+  const toast = useCallback((message: string, type: ToastType) => {
     setMessage(message);
     setType(type);
-  };
+  }, []);
 
   const hideToastMessage = () => {
     setMessage(undefined);
