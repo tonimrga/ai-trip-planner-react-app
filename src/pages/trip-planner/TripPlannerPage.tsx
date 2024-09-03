@@ -6,6 +6,7 @@ import { TripPlanPreview, TripPlannerForm } from "./components";
 import { getTripItinerary } from "../../services";
 import { DEFAULT_TRIP_DATA_VALUE } from "../../consts";
 import { useToast } from "../../hooks";
+import { scrollToTop } from "../../utils";
 
 export const TripPlannerPage = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -31,6 +32,7 @@ export const TripPlannerPage = () => {
         itinerary,
       });
       setShowPreviewPage(true);
+      scrollToTop();
     } catch {
       toast("Error generating a trip plan.", "error");
     } finally {

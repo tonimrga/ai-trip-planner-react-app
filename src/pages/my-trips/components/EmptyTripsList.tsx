@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { PrimaryButton } from "../../../common-components";
 
 export const EmptyTripsList = () => {
+  console.log("kako");
   return (
     <div className="w-full flex justify-center items-center flex-col pt-32">
       <h2 className="text-base font-semibold leading-7 text-gray-900">

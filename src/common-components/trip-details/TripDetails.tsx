@@ -1,5 +1,6 @@
 import { ITrip } from "../../types";
 import { TextInput } from "../";
+import { formatDate } from "../../utils";
 
 interface Props {
   onChangeTripValue: (key: string, value: string) => void;
@@ -37,7 +38,7 @@ export const TripDetails = ({ trip, onChangeTripValue }: Props) => {
               Start date
             </dt>
             <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-              {trip.startDate}
+              {formatDate(trip.startDate)}
             </dd>
           </div>
           <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
@@ -45,7 +46,7 @@ export const TripDetails = ({ trip, onChangeTripValue }: Props) => {
               End date
             </dt>
             <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
-              {trip.endDate}
+              {formatDate(trip.endDate)}
             </dd>
           </div>
           <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">

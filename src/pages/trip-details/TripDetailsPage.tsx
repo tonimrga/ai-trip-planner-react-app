@@ -13,7 +13,7 @@ import { getTripsDetails, updateTrip } from "../../services";
 import { useToast } from "../../hooks";
 
 export const TripDetailsPage = () => {
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [trip, setTrip] = useState<ITrip>();
   const [isSavingInProgress, setIsSavingInProgress] = useState(false);
 

@@ -21,3 +21,7 @@ export const getMaximumEndDateValue = (
 export const formatDate = (dateString: string): string => {
   return dateString.slice(0, 10);
 };
+
+export const scrollToTop = () => {
+  window.scrollTo(0, 0);
+};
