@@ -9,11 +9,13 @@ import {
   RadioInput,
   TextButton,
   PrimaryButton,
+  Checkbox,
 } from "../../../common-components";
+import { INTERESTS_OPTIONS, MODE_OF_TRANSPORT_OPTIONS } from "../../../consts";
 
 interface Props {
   tripPlan: ITrip;
-  onChangeTripValue: (key: string, value: string) => void;
+  onChangeTripValue: (key: string, value: string | string[]) => void;
   onResetClick: () => void;
   onGetTripItinerary: () => void;
 }
@@ -24,8 +26,14 @@ export const TripPlannerForm = ({
   onResetClick,
   onGetTripItinerary,
 }: Props) => {
-  const { destination, startDate, endDate, numOfTravellers, modeOfTransport } =
-    tripPlan;
+  const {
+    destination,
+    startDate,
+    endDate,
+    numOfTravellers,
+    modeOfTransport,
+    interests,
+  } = tripPlan;
 
   const isSubmitButtonDisabled =
     destination === "" || startDate === "" || endDate === "";
@@ -116,56 +124,37 @@ export const TripPlannerForm = ({
                 How will you be travelling to your destination?
               </p>
               <div className="mt-6 space-y-6">
-                <div className="flex items-center gap-x-3">
+                {MODE_OF_TRANSPORT_OPTIONS.map((option) => (
                   <RadioInput
-                    label="Aeroplane"
-                    id="aeroplane"
+                    key={option.id}
+                    label={option.label}
+                    id={option.id}
                     value={modeOfTransport}
                     onChange={(value) =>
                       onChangeTripValue("modeOfTransport", value)
                     }
                   />
-                </div>
-                <div className="flex items-center gap-x-3">
-                  <RadioInput
-                    label="Car/Motorbike"
-                    id="car/motorbike"
-                    value={modeOfTransport}
-                    onChange={(value) =>
-                      onChangeTripValue("modeOfTransport", value)
-                    }
+                ))}
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend className="text-sm font-semibold leading-6 text-gray-900">
+                What are your interests?
+              </legend>
+              <p className="mt-1 text-sm leading-6 text-gray-600">
+                Which activities do you want to focus on in your travel plan?
+              </p>
+              <div className="mt-6 space-y-6">
+                {INTERESTS_OPTIONS.map((option) => (
+                  <Checkbox
+                    key={option.id}
+                    value={interests}
+                    label={option.label}
+                    id={option.id}
+                    onChange={(value) => onChangeTripValue("interests", value)}
                   />
-                </div>
-                <div className="flex items-center gap-x-3">
-                  <RadioInput
-                    label="Train"
-                    id="train"
-                    value={modeOfTransport}
-                    onChange={(value) =>
-                      onChangeTripValue("modeOfTransport", value)
-                    }
-                  />
-                </div>
-                <div className="flex items-center gap-x-3">
-                  <RadioInput
-                    label="Bus"
-                    id="bus"
-                    value={modeOfTransport}
-                    onChange={(value) =>
-                      onChangeTripValue("modeOfTransport", value)
-                    }
-                  />
-                </div>
-                <div className="flex items-center gap-x-3">
-                  <RadioInput
-                    label="Bicycle"
-                    id="bicycle"
-                    value={modeOfTransport}
-                    onChange={(value) =>
-                      onChangeTripValue("modeOfTransport", value)
-                    }
-                  />
-                </div>
+                ))}
               </div>
             </fieldset>
           </div>

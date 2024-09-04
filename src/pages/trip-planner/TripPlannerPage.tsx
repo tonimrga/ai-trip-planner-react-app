@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { AppLayout, FullScreenLoader } from "../../common-components";
+import { AppLayout, FullscreenLoader } from "../../common-components";
 import { ITrip } from "../../types";
 import { TripPlanPreview, TripPlannerForm } from "./components";
 import { getTripItinerary } from "../../services";
@@ -19,7 +19,7 @@ export const TripPlannerPage = () => {
     setTripPlan(DEFAULT_TRIP_DATA_VALUE);
   };
 
-  const onChangeTripValue = (key: string, value: string) => {
+  const onChangeTripValue = (key: string, value: string | string[]) => {
     setTripPlan({ ...tripPlan, [key]: value });
   };
 
@@ -43,7 +43,7 @@ export const TripPlannerPage = () => {
   return (
     <AppLayout pageTitle="Trip planner">
       {isLoading && (
-        <FullScreenLoader text="Generating your trip itinerary. Please don't close this page." />
+        <FullscreenLoader text="Generating your trip itinerary. Please don't close this page." />
       )}
       <div className="mx-auto max-w-4xl px-4 py-6 sm:px-6 lg:px-8">
         {showPreviewPage ? (

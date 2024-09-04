@@ -18,6 +18,7 @@ export interface ITrip {
   endDate: string;
   numOfTravellers?: string;
   modeOfTransport?: string;
+  interests?: string[];
 }
 
 export interface IUser {
