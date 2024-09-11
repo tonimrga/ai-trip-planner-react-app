@@ -12,6 +12,7 @@ export { PrimaryButton } from "./buttons/PrimaryButton";
 export { TextButton } from "./buttons/TextButton";
 export { SecondaryButton } from "./buttons/SecondaryButton";
 export { DangerButton } from "./buttons/DangerButton";
+export { IconButton } from "./buttons/IconButton";
 export { TripDetails } from "./trip-details/TripDetails";
 export { ToastContainer } from "./toast/ToastContainer";
 export { ToastSuccess } from "./toast/ToastSuccess";

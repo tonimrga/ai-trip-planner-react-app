@@ -5,8 +5,8 @@ const url = `${import.meta.env.VITE_API_URL}/trips`;
 const headers = new Headers();
 headers.append("Content-Type", "application/json");
 
-export const getAllUserTrips = async (): Promise<ITrip[]> => {
-  const response = await fetch(`${url}`, {
+export const getAllUserTrips = async (searchTerm: string): Promise<ITrip[]> => {
+  const response = await fetch(`${url}?search=${searchTerm}`, {
     credentials: "include",
   });
 
